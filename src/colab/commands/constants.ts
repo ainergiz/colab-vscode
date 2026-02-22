@@ -110,3 +110,27 @@ export const OPEN_TERMINAL: RegisteredCommand = {
   icon: 'terminal',
   description: 'Opens a terminal connected to a Colab runtime.',
 };
+
+/** Non-interactive command to list runtimes for automation/agents. */
+export const AGENT_LIST_RUNTIMES: RegisteredCommand = {
+  id: 'colab.agent.listRuntimes',
+  label: 'Agent: List Runtimes',
+};
+
+/** Non-interactive command to start/reuse a runtime for automation/agents. */
+export const AGENT_START_RUNTIME: RegisteredCommand = {
+  id: 'colab.agent.startRuntime',
+  label: 'Agent: Start Runtime',
+};
+
+/** Non-interactive command to stop one or more runtimes for automation/agents. */
+export const AGENT_STOP_RUNTIME: RegisteredCommand = {
+  id: 'colab.agent.stopRuntime',
+  label: 'Agent: Stop Runtime',
+};
+
+/** Non-interactive command to inspect runtime status for automation/agents. */
+export const AGENT_RUNTIME_STATUS: RegisteredCommand = {
+  id: 'colab.agent.runtimeStatus',
+  label: 'Agent: Runtime Status',
+};

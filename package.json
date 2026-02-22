@@ -169,6 +169,26 @@
         "enablement": "colab.hasAssignedServer",
         "title": "Open Terminal",
         "icon": "$(terminal)"
+      },
+      {
+        "category": "Colab",
+        "command": "colab.agent.listRuntimes",
+        "title": "Agent: List Runtimes"
+      },
+      {
+        "category": "Colab",
+        "command": "colab.agent.startRuntime",
+        "title": "Agent: Start Runtime"
+      },
+      {
+        "category": "Colab",
+        "command": "colab.agent.stopRuntime",
+        "title": "Agent: Stop Runtime"
+      },
+      {
+        "category": "Colab",
+        "command": "colab.agent.runtimeStatus",
+        "title": "Agent: Runtime Status"
       }
     ],
     "icons": {
@@ -252,6 +272,22 @@
         {
           "command": "colab.openTerminal",
           "when": "config.colab.terminal"
+        },
+        {
+          "command": "colab.agent.listRuntimes",
+          "when": "false"
+        },
+        {
+          "command": "colab.agent.startRuntime",
+          "when": "false"
+        },
+        {
+          "command": "colab.agent.stopRuntime",
+          "when": "false"
+        },
+        {
+          "command": "colab.agent.runtimeStatus",
+          "when": "false"
         }
       ],
       "explorer/context": [

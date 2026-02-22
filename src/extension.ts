@@ -13,6 +13,10 @@ import { login } from './auth/login';
 import { AuthStorage } from './auth/storage';
 import { ColabClient } from './colab/client';
 import {
+  AGENT_LIST_RUNTIMES,
+  AGENT_RUNTIME_STATUS,
+  AGENT_START_RUNTIME,
+  AGENT_STOP_RUNTIME,
   COLAB_TOOLBAR,
   UPLOAD,
   MOUNT_DRIVE,
@@ -21,6 +25,16 @@ import {
   SIGN_OUT,
   OPEN_TERMINAL,
 } from './colab/commands/constants';
+import {
+  agentListRuntimes,
+  AgentListRuntimesArgs,
+  agentRuntimeStatus,
+  AgentRuntimeStatusArgs,
+  agentStartRuntime,
+  AgentStartRuntimeArgs,
+  agentStopRuntime,
+  AgentStopRuntimeArgs,
+} from './colab/commands/agent';
 import { upload } from './colab/commands/files';
 import {
   notebookToolbar,
@@ -263,6 +277,30 @@ drive.mount('/content/drive')`,
       OPEN_TERMINAL.id,
       async (withBackButton?: boolean) => {
         await openTerminal(vscode, assignmentManager, withBackButton);
+      },
+    ),
+    vscode.commands.registerCommand(
+      AGENT_LIST_RUNTIMES.id,
+      async (args?: AgentListRuntimesArgs) => {
+        return await agentListRuntimes(assignmentManager, args ?? {});
+      },
+    ),
+    vscode.commands.registerCommand(
+      AGENT_START_RUNTIME.id,
+      async (args?: AgentStartRuntimeArgs) => {
+        return await agentStartRuntime(assignmentManager, args ?? {});
+      },
+    ),
+    vscode.commands.registerCommand(
+      AGENT_STOP_RUNTIME.id,
+      async (args?: AgentStopRuntimeArgs) => {
+        return await agentStopRuntime(assignmentManager, args ?? {});
+      },
+    ),
+    vscode.commands.registerCommand(
+      AGENT_RUNTIME_STATUS.id,
+      async (args?: AgentRuntimeStatusArgs) => {
+        return await agentRuntimeStatus(assignmentManager, args ?? {});
       },
     ),
   ];
