@@ -407,6 +407,10 @@
     "test:e2e:headless": "npm run test:e2e -- --headless",
     "agent:bridge": "tsx scripts/colab-agent-bridge.mts",
     "agent:bridge:mcp": "tsx scripts/colab-agent-bridge-mcp.mts",
+    "agent:up": "tsx scripts/colab-agent.mts up",
+    "agent:status": "tsx scripts/colab-agent.mts status",
+    "agent:mcp": "tsx scripts/colab-agent.mts mcp",
+    "agent:install": "bash scripts/install-colab-agent.sh",
     "vscode:prepublish": "npm run package",
     "package": "concurrently \"npm:typecheck:prod\" \"npm:build:extension -- --production\" --prefixColors=auto"
   },

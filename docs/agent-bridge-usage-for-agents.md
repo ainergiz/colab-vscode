@@ -345,6 +345,13 @@ npx tsx scripts/colab-agent-bridge.mts notebook.execute '{"code":"print(123)"}'
 
 Supports params from inline JSON, `@file`, or stdin (`-`).
 
+For one-command startup/checks:
+
+```bash
+colab-agent up
+colab-agent status --json
+```
+
 ## 11) MCP Adapter
 
 Script:

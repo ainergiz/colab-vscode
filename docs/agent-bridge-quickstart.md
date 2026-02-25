@@ -2,6 +2,24 @@
 
 This is the minimal, reliable flow for external agents to run notebooks hands-free through the patched Colab VS Code extension.
 
+## 0) One-command startup (recommended)
+
+Install the helper once:
+
+```bash
+cd /Users/ainergiz/colab-vscode-agent-bridge
+npm run agent:install
+```
+
+Then after reboot:
+
+```bash
+colab-agent up
+```
+
+This starts Cursor (unless `--no-open-cursor`), waits for bridge readiness,
+checks `/healthz`, and verifies authenticated `ping`.
+
 ## 1) Enable bridge in machine settings
 
 Set these in VS Code settings (`settings.json`):

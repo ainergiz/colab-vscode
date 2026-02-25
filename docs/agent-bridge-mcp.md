@@ -33,6 +33,12 @@ Equivalent:
 npx tsx scripts/colab-agent-bridge-mcp.mts
 ```
 
+Recommended wrapper (starts bridge readiness first):
+
+```bash
+colab-agent mcp
+```
+
 Optional env:
 
 1. `COLAB_AGENT_BRIDGE_ENDPOINT` to bypass state-file discovery.
