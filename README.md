@@ -44,6 +44,13 @@ Activate the command palette with `Ctrl+Shift+P` or `Cmd+Shift+P` on Mac.
 Contributions are welcome and appreciated! See the [contributing
 guide](./docs/contributing.md) for more info.
 
+## Agent Bridge (Experimental)
+
+This branch includes an optional local bridge for hands-free agent automation.
+
+1. Quickstart: [`docs/agent-bridge-quickstart.md`](./docs/agent-bridge-quickstart.md)
+2. Full contract and methods: [`docs/agent-bridge-usage-for-agents.md`](./docs/agent-bridge-usage-for-agents.md)
+
 ## Data and Telemetry
 
 The extension does not collect any client-side usage data within VS Code. See

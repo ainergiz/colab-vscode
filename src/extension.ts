@@ -25,6 +25,7 @@ import {
   SIGN_OUT,
   OPEN_TERMINAL,
 } from './colab/commands/constants';
+import { AgentBridgeController } from './colab/agent-bridge';
 import {
   agentListRuntimes,
   AgentListRuntimesArgs,
@@ -106,6 +107,7 @@ export async function activate(context: vscode.ExtensionContext) {
     colabClient,
     serverStorage,
   );
+  const agentBridge = new AgentBridgeController(vscode, assignmentManager);
   const serverProvider = new ColabJupyterServerProvider(
     vscode,
     authProvider.onDidChangeSessions,
@@ -159,6 +161,7 @@ export async function activate(context: vscode.ExtensionContext) {
     disposeAll(authFlows),
     authProvider,
     assignmentManager,
+    agentBridge,
     experimentStateProvider,
     serverProvider,
     jupyterConnections,

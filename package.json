@@ -40,7 +40,8 @@
   ],
   "activationEvents": [
     "onNotebook:jupyter-notebook",
-    "onNotebook:interactive"
+    "onNotebook:interactive",
+    "onStartupFinished"
   ],
   "contributes": {
     "configuration": {
@@ -92,6 +93,50 @@
           "tags": [
             "experimental"
           ]
+        },
+        "colab.agentBridge.enabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enables a local HTTP bridge so automation tools can call Colab runtime commands without UI prompts.",
+          "scope": "machine",
+          "tags": [
+            "experimental"
+          ]
+        },
+        "colab.agentBridge.host": {
+          "type": "string",
+          "default": "127.0.0.1",
+          "scope": "machine",
+          "description": "Host interface for the Colab agent bridge listener."
+        },
+        "colab.agentBridge.allowRemoteHost": {
+          "type": "boolean",
+          "default": false,
+          "scope": "machine",
+          "description": "Unsafe: allow specific non-loopback bind hosts for the agent bridge. Wildcard bind hosts (0.0.0.0/::) are not supported. A non-empty token is still required.",
+          "tags": [
+            "experimental"
+          ]
+        },
+        "colab.agentBridge.port": {
+          "type": "number",
+          "default": 0,
+          "minimum": 0,
+          "maximum": 65535,
+          "scope": "machine",
+          "description": "Port for the Colab agent bridge listener. Use 0 for an ephemeral port."
+        },
+        "colab.agentBridge.token": {
+          "type": "string",
+          "default": "",
+          "scope": "machine",
+          "markdownDescription": "Shared token for the bridge API. Required when the bridge is enabled. Callers must send `Authorization: Bearer <token>` or `x-colab-agent-token`."
+        },
+        "colab.agentBridge.stateFile": {
+          "type": "string",
+          "default": "~/.colab-agent-bridge.json",
+          "scope": "machine",
+          "description": "Path to write bridge connection metadata so external agents can discover the endpoint."
         }
       }
     },
@@ -360,6 +405,7 @@
     "pretest:e2e": "npm run build:tests",
     "test:e2e": "scripts/test_e2e.sh",
     "test:e2e:headless": "npm run test:e2e -- --headless",
+    "agent:bridge": "tsx scripts/colab-agent-bridge.mts",
     "vscode:prepublish": "npm run package",
     "package": "concurrently \"npm:typecheck:prod\" \"npm:build:extension -- --production\" --prefixColors=auto"
   },

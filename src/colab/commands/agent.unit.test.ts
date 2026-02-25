@@ -13,6 +13,7 @@ import { ColabAssignedServer, UnownedServer } from '../../jupyter/servers';
 import { newVsCodeStub, VsCodeStub } from '../../test/helpers/vscode';
 import {
   agentListRuntimes,
+  agentListRuntimeOptions,
   agentRuntimeStatus,
   agentStartRuntime,
   agentStopRuntime,
@@ -70,6 +71,37 @@ describe('Agent Commands', () => {
     expect(result.assigned[0].owner).to.equal('extension');
     expect(result.unowned[0].owner).to.equal('external');
     expect(result.unowned[0].endpoint).to.equal('m-s-remote');
+  });
+
+  it('lists account-eligible runtime options before assignment', async () => {
+    (
+      assignmentManagerStub.getAvailableServerDescriptors as sinon.SinonStub
+    ).resolves([
+      { label: 'Colab CPU', variant: Variant.DEFAULT },
+      {
+        label: 'Colab GPU L4',
+        variant: Variant.GPU,
+        accelerator: 'L4',
+        shape: Shape.STANDARD,
+      },
+      {
+        label: 'Colab TPU v2',
+        variant: Variant.TPU,
+        accelerator: 'V2',
+      },
+    ]);
+
+    const result = await agentListRuntimeOptions(assignmentManagerStub);
+
+    expect(result.options).to.have.length(3);
+    expect(result.counts).to.deep.equal({
+      total: 3,
+      byVariant: {
+        DEFAULT: 1,
+        GPU: 1,
+        TPU: 1,
+      },
+    });
   });
 
   it('reuses latest runtime when starting in latestOrCreate mode', async () => {
@@ -160,4 +192,3 @@ describe('Agent Commands', () => {
     expect(result.latestAssigned?.id).to.equal(defaultServer.id);
   });
 });
-
