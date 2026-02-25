@@ -345,7 +345,23 @@ npx tsx scripts/colab-agent-bridge.mts notebook.execute '{"code":"print(123)"}'
 
 Supports params from inline JSON, `@file`, or stdin (`-`).
 
-## 11) One-Command MedGemma Smoke
+## 11) MCP Adapter
+
+Script:
+
+1. `scripts/colab-agent-bridge-mcp.mts`
+
+Run:
+
+```bash
+npm run agent:bridge:mcp
+```
+
+This starts a stdio MCP server exposing bridge methods as MCP tools. See:
+
+`docs/agent-bridge-mcp.md`
+
+## 12) One-Command MedGemma Smoke
 
 Script:
 
@@ -374,7 +390,7 @@ Optional flags:
 6. `--timeout-ms <ms>`
 7. `--stop-runtime`
 
-## 12) Troubleshooting Patterns
+## 13) Troubleshooting Patterns
 
 1. `UNAUTHORIZED`: wrong/missing bridge token header.
 2. `INVALID_PARAMS`: wrong param type/value (bridge parser is strict).

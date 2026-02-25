@@ -50,6 +50,7 @@ This branch includes an optional local bridge for hands-free agent automation.
 
 1. Quickstart: [`docs/agent-bridge-quickstart.md`](./docs/agent-bridge-quickstart.md)
 2. Full contract and methods: [`docs/agent-bridge-usage-for-agents.md`](./docs/agent-bridge-usage-for-agents.md)
+3. MCP adapter: [`docs/agent-bridge-mcp.md`](./docs/agent-bridge-mcp.md)
 
 ## Data and Telemetry
 

@@ -131,3 +131,7 @@ done
 For complete method docs and API rules, use:
 
 `docs/agent-bridge-usage-for-agents.md`
+
+For MCP-based tool integration, use:
+
+`docs/agent-bridge-mcp.md`
